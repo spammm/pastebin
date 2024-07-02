@@ -1,0 +1,59 @@
+@import '@/app/variables.scss';
+
+.checkboxWrapper {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-family: $font-family;
+  font-size: $font-size;
+  color: $font-color;
+  user-select: none;
+
+  input[type='checkbox'] {
+    display: none;
+  }
+
+  .customCheckbox {
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(
+      145deg,
+      $color-black-gradient-start,
+      $color-black-gradient-end
+    );
+    border: 2px solid $color-black-border;
+    border-radius: 4px;
+    position: relative;
+    transition: background 0.3s ease, border 0.3s ease;
+    margin-right: 10px;
+  }
+
+  input[type='checkbox']:checked + .customCheckbox {
+    background: linear-gradient(
+      145deg,
+      lighten($color-black-gradient-start, 10%),
+      lighten($color-black-gradient-end, 10%)
+    );
+  }
+
+  input[type='checkbox']:checked + .customCheckbox::after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid $font-color;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  input[type='checkbox']:disabled + .customCheckbox {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  input[type='checkbox']:disabled + .customCheckbox::after {
+    border-color: lighten($color-black-gradient-start, 50%);
+  }
+}

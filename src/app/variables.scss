@@ -1,0 +1,64 @@
+// Font settings
+$font-family: 'Roboto', sans-serif;
+$font-size: 18px;
+
+// Light theme colors
+$light-theme-font-color: #000;
+$light-theme-background-color: #fff;
+$light-theme-border-color: #ccc;
+$light-theme-shadow-color: rgba(0, 0, 0, 0.1);
+
+// Dark theme colors
+$dark-theme-font-color: #fff;
+$dark-theme-background-color: #000;
+$dark-theme-border-color: #222;
+$dark-theme-shadow-color: rgba(255, 255, 255, 0.1);
+
+// Main colors
+$primary-color: #ff4444;
+$primary-color-dark: #cc0000;
+$primary-color-border: #aa0000;
+$secondary-color: #44ff44;
+$secondary-color-dark: #00cc00;
+$secondary-color-border: #00aa00;
+
+// Gradients
+$gradient-light-start: #f0f0f0;
+$gradient-light-end: #e0e0e0;
+$gradient-dark-start: #444;
+$gradient-dark-end: #333;
+
+// Shadows
+$box-shadow-light: 3px 3px 5px $light-theme-shadow-color,
+  -3px -3px 5px rgba(0, 0, 0, 0.2);
+$box-shadow-dark: 3px 3px 5px $dark-theme-shadow-color,
+  -3px -3px 5px rgba(0, 0, 0, 0.2);
+
+// Theme mixins
+@mixin light-theme {
+  --font-color: #{$light-theme-font-color};
+  --background-color: #{$light-theme-background-color};
+  --border-color: #{$light-theme-border-color};
+  --shadow-color: #{$light-theme-shadow-color};
+}
+
+@mixin dark-theme {
+  --font-color: #{$dark-theme-font-color};
+  --background-color: #{$dark-theme-background-color};
+  --border-color: #{$dark-theme-border-color};
+  --shadow-color: #{$dark-theme-shadow-color};
+}
+
+// Applying theme
+body {
+  font-family: $font-family;
+  font-size: $font-size;
+  color: var(--font-color);
+  background-color: var(--background-color);
+}
+
+// Example of usage in a component
+.example-component {
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-color);
+}

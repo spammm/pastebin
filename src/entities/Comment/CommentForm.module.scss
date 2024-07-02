@@ -1,0 +1,44 @@
+@import '@/app/variables.scss';
+
+.addComment {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.textarea {
+  width: 100%;
+}
+.inputBlock {
+  position: relative;
+}
+
+.emojiPickerButton {
+  position: absolute;
+  right: 0px;
+  top: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: $color-white;
+  font-size: 1.5rem;
+}
+
+.emojiPicker {
+  position: absolute;
+}
+
+.error {
+  color: $color-red;
+  margin-top: 0.2rem;
+  font-size: 0.875rem;
+}
+
+.captchaContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.submit {
+  align-self: baseline;
+}

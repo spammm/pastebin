@@ -1,0 +1,21 @@
+@import '@/app/variables.scss';
+
+.captchaWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.label {
+  color: $color-white;
+  margin-bottom: 8px;
+}
+
+.errorInput {
+  border-color: $color-red;
+}
+
+.error {
+  color: $color-red;
+  margin-top: 8px;
+}

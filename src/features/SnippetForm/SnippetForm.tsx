@@ -1,0 +1,123 @@
+'use client';
+import React, { useState } from 'react';
+import { useFormik } from 'formik';
+import { useRouter } from 'next/navigation';
+import { Button, CheckBox, SelectBox, TextInput } from '@/shared';
+import { MathCaptcha, SnippetEditor, SnippetType } from '@/entities';
+import monacoLanguages from '@/entities/Snippet/monacoLanguages';
+import styles from './SnippetForm.module.scss';
+import { createSnippet } from '@/services/api';
+
+const validate = (values: Omit<SnippetType, 'id' | 'shortUrl'>) => {
+  const errors: Record<string, string> = {};
+  if (!values.code) {
+    errors.code = 'Код обязателен';
+  }
+  if (!values.language) {
+    errors.language = 'Синтаксис обязателен';
+  }
+  if (!values.author) {
+    errors.author = 'Автор обязателен';
+  }
+  if (!values.description) {
+    errors.description = 'Комментарий обязателен';
+  }
+  return errors;
+};
+
+const SnippetForm = () => {
+  const [captchaValid, setCaptchaValid] = useState(false);
+  const router = useRouter();
+
+  const formik = useFormik({
+    initialValues: {
+      code: 'console.log("Hello world")',
+      language: 'javascript',
+      author: '',
+      description: '',
+      isPrivate: false,
+    },
+    validate,
+    onSubmit: async (values) => {
+      if (!captchaValid) {
+        alert('Пожалуйста, подтвердите, что вы не робот.');
+        return;
+      }
+      const snippet = await createSnippet(values);
+      router.push(`/${snippet.shortUrl}`);
+    },
+  });
+
+  const renderError = (field: keyof Omit<SnippetType, 'id' | 'shortUrl'>) =>
+    formik.touched[field as keyof typeof formik.touched] &&
+    formik.errors[field as keyof typeof formik.errors] ? (
+      <div className={styles.error}>
+        {formik.errors[field as keyof typeof formik.errors]}
+      </div>
+    ) : null;
+
+  return (
+    <form className={styles.form} onSubmit={formik.handleSubmit}>
+      <div className={styles.controls}>
+        <SelectBox
+          name="language"
+          options={monacoLanguages}
+          label="Выберите синтаксис подсветки"
+          value={formik.values.language}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
+        {renderError('language')}
+      </div>
+
+      <SnippetEditor
+        value={formik.values.code}
+        onChange={(value) => formik.setFieldValue('code', value)}
+        language={formik.values.language}
+        height={'50vh'}
+      />
+      <br />
+      <br />
+      {renderError('code')}
+
+      <div className={styles.controls}>
+        <CheckBox
+          name="isPrivate"
+          label="Сделать сниппет не публичным"
+          checked={formik.values.isPrivate}
+          onChange={formik.handleChange}
+        />
+
+        <TextInput
+          name="author"
+          placeholder="Введите свое имя"
+          label="Автор"
+          value={formik.values.author}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          color={formik.errors.author && 'red'}
+          aria-invalid={!!formik.errors.author}
+        />
+        {renderError('author')}
+
+        <TextInput
+          name="description"
+          placeholder="Оставьте пояснение"
+          label="Комментарий автора"
+          value={formik.values.description}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          color={formik.errors.description && 'red'}
+          aria-invalid={!!formik.errors.description}
+        />
+        {renderError('description')}
+
+        <MathCaptcha onValidate={setCaptchaValid} />
+
+        <Button type="submit">Опубликовать</Button>
+      </div>
+    </form>
+  );
+};
+
+export default SnippetForm;

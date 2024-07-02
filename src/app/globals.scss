@@ -1,0 +1,9 @@
+@import './variables.scss';
+
+body.light-theme {
+  @include light-theme;
+}
+
+body.dark-theme {
+  @include dark-theme;
+}

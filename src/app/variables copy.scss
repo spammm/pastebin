@@ -1,0 +1,48 @@
+//font
+$font-family: 'Roboto', sans-serif;
+$font-size: 18px;
+$font-color: #fff;
+
+// Main colors
+$color-black: #000;
+$color-white: #fff;
+$color-red: #ff4444;
+$color-red-dark: #cc0000;
+$color-red-border: #aa0000;
+$color-green: #44ff44;
+$color-green-dark: #00cc00;
+$color-green-border: #00aa00;
+
+// background colors
+$color-background: #605e5c;
+$color-footer: #ccc;
+
+// gradients
+$color-black-gradient-start: #444;
+$color-black-gradient-end: #333;
+$color-black-border: #222;
+
+$color-white-gradient-start: #fff;
+$color-white-gradient-end: #eee;
+$color-white-border: #ccc;
+$color-white-text: #333;
+
+$color-red-gradient-start: #ff4444;
+$color-red-gradient-end: #cc0000;
+$color-red-hover-gradient-start: #ff5555;
+$color-red-hover-gradient-end: #dd0000;
+
+$color-green-gradient-start: #44ff44;
+$color-green-gradient-end: #00cc00;
+$color-green-hover-gradient-start: #55ff55;
+$color-green-hover-gradient-end: #00dd00;
+
+// shadows
+$box-shadow-default: 3px 3px 5px $color-black, -3px -3px 5px #555;
+$box-shadow-inset: inset 3px 3px 5px $color-black, inset -3px -3px 5px #555;
+$box-shadow-inset-white: inset 3px 3px 5px $color-white-border,
+  inset -3px -3px 5px $color-white-gradient-start;
+$box-shadow-inset-red: inset 3px 3px 5px $color-red-border,
+  inset -3px -3px 5px $color-red;
+$box-shadow-inset-green: inset 3px 3px 5px $color-green-border,
+  inset -3px -3px 5px $color-green;

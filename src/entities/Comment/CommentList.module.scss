@@ -1,0 +1,19 @@
+@import '@/app/variables.scss';
+
+.commentSection {
+  width: calc(100% - 40px);
+  box-sizing: border-box;
+  padding: 1rem;
+  background-color: $color-background;
+  border-radius: 10px;
+  box-shadow: $box-shadow-default;
+  color: $color-white-text;
+}
+
+.commentList {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0 0;
+}
+
+

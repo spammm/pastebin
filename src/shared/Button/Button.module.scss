@@ -1,0 +1,104 @@
+@import '@/app/variables.scss';
+
+.button {
+  border: 2px solid;
+  border-radius: 20px;
+  box-shadow: $box-shadow-default;
+  color: $font-color;
+  cursor: pointer;
+  font-size: $font-size;
+  padding: 10px 20px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: background 0.3s ease;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &.black {
+    background: linear-gradient(
+      145deg,
+      $color-black-gradient-start,
+      $color-black-gradient-end
+    );
+    border-color: $color-black-border;
+
+    &:hover:not(:disabled) {
+      background: linear-gradient(
+        145deg,
+        lighten($color-black-gradient-start, 10%),
+        lighten($color-black-gradient-end, 10%)
+      );
+    }
+
+    &:active:not(:disabled) {
+      box-shadow: $box-shadow-inset;
+    }
+  }
+
+  &.white {
+    background: linear-gradient(
+      145deg,
+      $color-white-gradient-start,
+      $color-white-gradient-end
+    );
+    border-color: $color-white-border;
+    color: $color-white-text;
+
+    &:hover:not(:disabled) {
+      background: linear-gradient(
+        145deg,
+        lighten($color-white-gradient-start, 10%),
+        lighten($color-white-gradient-end, 10%)
+      );
+    }
+
+    &:active:not(:disabled) {
+      box-shadow: $box-shadow-inset-white;
+    }
+  }
+
+  &.red {
+    background: linear-gradient(
+      145deg,
+      $color-red-gradient-start,
+      $color-red-gradient-end
+    );
+    border-color: $color-red-border;
+
+    &:hover:not(:disabled) {
+      background: linear-gradient(
+        145deg,
+        $color-red-hover-gradient-start,
+        $color-red-hover-gradient-end
+      );
+    }
+
+    &:active:not(:disabled) {
+      box-shadow: $box-shadow-inset-red;
+    }
+  }
+
+  &.green {
+    background: linear-gradient(
+      145deg,
+      $color-green-gradient-start,
+      $color-green-gradient-end
+    );
+    border-color: $color-green-border;
+
+    &:hover:not(:disabled) {
+      background: linear-gradient(
+        145deg,
+        $color-green-hover-gradient-start,
+        $color-green-hover-gradient-end
+      );
+    }
+
+    &:active:not(:disabled) {
+      box-shadow: $box-shadow-inset-green;
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@import '@/app/variables.scss';
+
+.skeletonList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skeletonListItem {
+  margin-bottom: 16px;
+  padding: 16px;
+  background: $color-background;
+  border: 1px solid $color-black-border;
+  border-radius: 8px;
+}
+
+.skeletonArticle {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeletonTitle,
+.skeletonDescription {
+  background: linear-gradient(
+    90deg,
+    $color-background 25%,
+    lighten($color-background, 20%) 37%,
+    $color-background 63%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
+}
+
+.skeletonTitle {
+  width: 50%;
+  height: 24px;
+}
+
+.skeletonDescription {
+  width: 100%;
+  height: 16px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

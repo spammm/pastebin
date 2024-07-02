@@ -1,0 +1,19 @@
+@import '@/app/variables.scss';
+
+.author {
+  font-weight: bold;
+  margin-bottom: 0.2rem;
+}
+
+.content {
+  margin: 0;
+}
+.commentItem {
+  padding: 0.5rem;
+  border-bottom: 1px solid #555;
+  color: $color-white;
+}
+.date{
+  font-style: italic;
+  font-size: 0.8em;
+}

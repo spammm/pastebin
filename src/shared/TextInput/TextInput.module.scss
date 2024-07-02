@@ -1,0 +1,55 @@
+@import '@/app/variables.scss';
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  font-family: $font-family;
+  font-size: $font-size;
+  color: $font-color;
+  margin-bottom: 16px;
+}
+
+.label {
+  margin-bottom: 8px;
+  font-size: $font-size;
+  color: $font-color;
+}
+
+.input {
+  padding: 10px 20px;
+  border: 2px solid $color-black-border;
+  border-radius: 20px;
+  background: linear-gradient(
+    145deg,
+    $color-black-gradient-start,
+    $color-black-gradient-end
+  );
+  box-shadow: $box-shadow-default;
+  color: $font-color;
+  font-size: $font-size;
+  outline: none;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover:not(:disabled) {
+    background: linear-gradient(
+      145deg,
+      lighten($color-black-gradient-start, 10%),
+      lighten($color-black-gradient-end, 10%)
+    );
+  }
+
+  &:focus:not(:disabled) {
+    box-shadow: inset 3px 3px 5px $color-black, inset -3px -3px 5px #555;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+  &.red {
+    border-color: $color-red-border;
+    &::placeholder {
+      color: $color-red;
+    }
+  }
+}

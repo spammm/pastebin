@@ -1,0 +1,53 @@
+@import '@/app/variables.scss';
+
+.body {
+  background-color: $color-background;
+  background: linear-gradient(
+    145deg,
+    $color-black-gradient-start,
+    $color-black-gradient-end
+  );
+  margin: 0;
+  padding: 0;
+  h1,
+  h2,
+  h3 {
+    color: $color-white;
+  }
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: grid;
+  grid-template-areas: 'header herder' 'main sidebar' 'footer footer';
+
+  grid-template-columns: 1fr 300px;
+  grid-template-rows: auto 1fr auto;
+}
+
+.main {
+  grid-area: main;
+  display: grid;
+  grid-template-rows: 1fr;
+}
+.header {
+  grid-area: header;
+}
+.footer {
+  grid-area: footer;
+}
+.sidebar {
+  grid-area: sidebar;
+}
+@media screen and (max-width: 700px) {
+  .sidebar {
+    display: none;
+  }
+  .wrapper {
+    grid-template-areas:
+      'header'
+      'main'
+      'footer';
+    grid-template-columns: 1fr;
+  }
+}

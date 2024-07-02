@@ -1,0 +1,28 @@
+@import '@/app/variables.scss';
+.form {
+  position: initial;
+}
+.controls {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 20px;
+}
+
+.error {
+  color: $color-red;
+  font-size: 16px;
+  margin-top: -25px;
+  margin-bottom: 0;
+}
+.code_error {
+  margin-top: 0;
+}
+
+@media screen and (max-width: 700px) {
+  .controls {
+    box-sizing: border-box;
+    width: 100%;
+  }
+}
