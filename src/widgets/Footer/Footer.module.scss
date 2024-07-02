@@ -1,0 +1,28 @@
+@import '@/app/variables.scss';
+
+.footer {
+  background-color: var(--background-color);
+  color: var(--font-color);
+  border-top: 1px solid var(--border-color);
+  padding: 1rem 0;
+  box-shadow: var(--shadow-color);
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .copy {
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    text-align: center;
+  }
+}

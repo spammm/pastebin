@@ -5,7 +5,7 @@
   flex-direction: column;
   font-family: $font-family;
   font-size: $font-size;
-  color: $font-color;
+  color: var(--font-color);
   margin-bottom: 16px;
   position: relative;
 }
@@ -13,7 +13,7 @@
 .label {
   margin-bottom: 8px;
   font-size: $font-size;
-  color: $font-color;
+  color: var(--font-color);
 }
 
 .customSelect {
@@ -25,15 +25,15 @@
 
 .selected {
   padding: 10px 20px;
-  border: 2px solid $color-black-border;
+  border: 2px solid var(--border-color);
   border-radius: 20px;
   background: linear-gradient(
     145deg,
-    $color-black-gradient-start,
-    $color-black-gradient-end
+    var(--background-color),
+    var(--border-color)
   );
-  box-shadow: $box-shadow-default;
-  color: $font-color;
+  box-shadow: var(--shadow-color);
+  color: var(--font-color);
   font-size: $font-size;
   outline: none;
   transition: background 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
@@ -54,7 +54,7 @@
   height: 0;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 5px solid $font-color;
+  border-top: 5px solid var(--font-color);
   transform: translateY(-50%);
   pointer-events: none;
 }
@@ -64,10 +64,10 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: $color-background;
-  border: 2px solid $color-black-border;
+  background: var(--background-color);
+  border: 2px solid var(--border-color);
   border-radius: 0 0 20px 20px;
-  box-shadow: $box-shadow-default;
+  box-shadow: var(--shadow-color);
   z-index: 10;
   max-height: 200px;
   overflow: hidden;
@@ -82,26 +82,26 @@
     height: 5px;
   }
   ::-webkit-scrollbar-thumb {
-    background: $color-white;
+    background: var(--font-color);
     border: none;
     border-radius: 5px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: $color-white;
+    background: var(--font-color);
   }
   ::-webkit-scrollbar-thumb:active {
-    background: $color-black;
+    background: var(--border-color);
   }
   ::-webkit-scrollbar-track {
-    background: $color-background;
+    background: var(--background-color);
     border: none;
     border-radius: 5px;
   }
   ::-webkit-scrollbar-track:hover {
-    background: $color-black;
+    background: var(--border-color);
   }
   ::-webkit-scrollbar-track:active {
-    background: $color-background;
+    background: var(--background-color);
   }
   ::-webkit-scrollbar-corner {
     background: transparent;
@@ -113,11 +113,12 @@
   width: calc(100% - 20px);
   padding: 10px;
   margin: 10px;
-  border: 2px solid $color-black-border;
+  border: 2px solid var(--border-color);
   border-radius: 10px;
-  background: $color-white-gradient-start;
-  box-shadow: inset 3px 3px 5px $color-black, inset -3px -3px 5px #555;
-  color: $color-black;
+  background: var(--background-color);
+  box-shadow: inset 3px 3px 5px var(--shadow-color),
+    inset -3px -3px 5px var(--border-color);
+  color: var(--font-color);
   font-size: $font-size;
   outline: none;
 }
@@ -132,9 +133,8 @@
   cursor: pointer;
   transition: background 0.3s ease;
 
-  &:hover,
-  &.highlighted {
-    background: $color-black-gradient-start;
-    color: $font-color;
+  &:hover {
+    background: var(--border-color);
+    color: var(--font-color);
   }
 }

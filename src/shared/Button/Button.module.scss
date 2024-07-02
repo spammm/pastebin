@@ -3,8 +3,8 @@
 .button {
   border: 2px solid;
   border-radius: 20px;
-  box-shadow: $box-shadow-default;
-  color: $font-color;
+  box-shadow: var(--shadow-color);
+  color: var(--font-color);
   cursor: pointer;
   font-size: $font-size;
   padding: 10px 20px;
@@ -20,59 +20,55 @@
   &.black {
     background: linear-gradient(
       145deg,
-      $color-black-gradient-start,
-      $color-black-gradient-end
+      var(--background-color),
+      var(--border-color)
     );
-    border-color: $color-black-border;
+    border-color: var(--border-color);
 
     &:hover:not(:disabled) {
       background: linear-gradient(
         145deg,
-        lighten($color-black-gradient-start, 10%),
-        lighten($color-black-gradient-end, 10%)
+        var(--background-lightened-color),
+        var(--background-color)
       );
     }
 
     &:active:not(:disabled) {
-      box-shadow: $box-shadow-inset;
+      box-shadow: var(--shadow-color);
     }
   }
 
   &.white {
     background: linear-gradient(
       145deg,
-      $color-white-gradient-start,
-      $color-white-gradient-end
+      var(--background-color),
+      var(--background-lightened-color)
     );
-    border-color: $color-white-border;
-    color: $color-white-text;
+    border-color: var(--border-color);
+    color: var(--font-color);
 
     &:hover:not(:disabled) {
       background: linear-gradient(
         145deg,
-        lighten($color-white-gradient-start, 10%),
-        lighten($color-white-gradient-end, 10%)
+        var(--background-lightened-color),
+        var(--background-color)
       );
     }
 
     &:active:not(:disabled) {
-      box-shadow: $box-shadow-inset-white;
+      box-shadow: var(--shadow-color);
     }
   }
 
   &.red {
-    background: linear-gradient(
-      145deg,
-      $color-red-gradient-start,
-      $color-red-gradient-end
-    );
-    border-color: $color-red-border;
+    background: linear-gradient(145deg, $primary-color, $primary-color-dark);
+    border-color: $primary-color-border;
 
     &:hover:not(:disabled) {
       background: linear-gradient(
         145deg,
-        $color-red-hover-gradient-start,
-        $color-red-hover-gradient-end
+        lighten($primary-color, 10%),
+        lighten($primary-color-dark, 10%)
       );
     }
 
@@ -84,16 +80,16 @@
   &.green {
     background: linear-gradient(
       145deg,
-      $color-green-gradient-start,
-      $color-green-gradient-end
+      $secondary-color,
+      $secondary-color-dark
     );
-    border-color: $color-green-border;
+    border-color: $secondary-color-border;
 
     &:hover:not(:disabled) {
       background: linear-gradient(
         145deg,
-        $color-green-hover-gradient-start,
-        $color-green-hover-gradient-end
+        lighten($secondary-color, 10%),
+        lighten($secondary-color-dark, 10%)
       );
     }
 

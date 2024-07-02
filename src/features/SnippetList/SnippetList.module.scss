@@ -7,15 +7,15 @@
 }
 
 .listItem {
-  background: $color-background;
-  border: 1px solid $color-black-border;
+  background: var(--background-color);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 16px;
   margin-bottom: 16px;
-  box-shadow: $box-shadow-default;
+  box-shadow: var(--shadow-color);
 
   &:hover {
-    background: lighten($color-background, 10%);
+    background: var(--background-lightened-color);
   }
 
   article {
@@ -25,7 +25,7 @@
   h2 {
     margin: 0 0 8px 0;
     font-size: 1.5em;
-    color: $font-color;
+    color: var(--font-color);
 
     a {
       text-decoration: none;
@@ -40,6 +40,6 @@
   p {
     margin: 0;
     font-size: 1em;
-    color: $font-color;
+    color: var(--font-color);
   }
 }

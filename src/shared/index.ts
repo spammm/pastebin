@@ -4,5 +4,14 @@ import TextInput from './TextInput/TextInput';
 import SelectBox from './SelectBox/SelectBox';
 import InfoBlock from './InfoBlock/InfoBlock';
 import Loader from './Loader/Loader';
+import ThemeToggle from './ThemeToggle/ThemeToggle';
 
-export { Button, CheckBox, TextInput, SelectBox, InfoBlock, Loader };
+export {
+  Button,
+  CheckBox,
+  TextInput,
+  SelectBox,
+  InfoBlock,
+  Loader,
+  ThemeToggle,
+};

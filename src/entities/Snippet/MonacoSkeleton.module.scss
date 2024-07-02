@@ -4,8 +4,8 @@
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  background: $color-background;
-  border: 1px solid $color-black-border;
+  background: var(--background-color);
+  border: 1px solid var(--border-color);
   border-radius: 4px;
   padding: 16px;
   display: flex;
@@ -17,9 +17,10 @@
   height: 16px;
   background: linear-gradient(
     90deg,
-    $color-background 25%,
-    lighten($color-background, 20%) 37%,
-    $color-background 63%
+    var(--background-color) 25%,
+    var(--background-lightened-color) 37%,
+    // New variable for lightened background
+    var(--background-color) 63%
   );
   background-size: 200% 100%;
   border-radius: 4px;

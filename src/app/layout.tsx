@@ -2,10 +2,10 @@ import type { Metadata } from 'next';
 import { clsx } from 'clsx';
 import { connectToMongoDB } from '@/lib/mongo';
 import { Roboto } from 'next/font/google';
-import './globals.css';
+import { Footer, Header } from '@/widgets';
+import { ThemeProvider } from 'next-themes';
+import './globals.scss';
 import styles from './layout.module.scss';
-import { SnipperListSkeleton, SnippetList } from '@/features';
-import { Suspense } from 'react';
 
 const roboto = Roboto({
   weight: ['400', '300', '700'],
@@ -25,19 +25,22 @@ export default function RootLayout({
 }>) {
   connectToMongoDB();
   return (
-    <html lang="ru">
-      <body className={clsx(roboto.className, styles.body, styles.wrapper)}>
-        <header className={styles.header}></header>
-        <aside className={styles.sidebar}>
-          {/* {
-            <Suspense fallback={<SnipperListSkeleton />}>
-              <SnippetList />
-            </Suspense>
-          } */}
-        </aside>
-        <main className={styles.main}>{children}</main>
-        <footer className={styles.footer}></footer>
-      </body>
+    <html lang="ru" suppressHydrationWarning>
+      <ThemeProvider attribute="class">
+        <body
+          className={clsx(
+            roboto.className,
+            styles.body,
+            styles.wrapper,
+            'body'
+          )}
+          suppressHydrationWarning
+        >
+          <Header className={styles.header} />
+          <main className={styles.main}>{children}</main>
+          <Footer className={styles.footer} />
+        </body>
+      </ThemeProvider>
     </html>
   );
 }

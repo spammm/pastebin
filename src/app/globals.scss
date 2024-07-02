@@ -1,9 +1,38 @@
-@import './variables.scss';
+@import '@/app/themes.scss';
 
-body.light-theme {
-  @include light-theme;
+/* Default (light) theme */
+:root {
+  --background-color: $light-theme-background-color;
+  --font-color: $light-theme-font-color;
+  --border-color: $light-theme-border-color;
+  --background-lightened-color: $light-theme-background-lightened-color;
+  --shadow-color: $light-theme-shadow-color;
 }
 
-body.dark-theme {
-  @include dark-theme;
+/* Dark theme */
+[data-theme='dark'] {
+  --background-color: $dark-theme-background-color;
+  --font-color: $dark-theme-font-color;
+  --border-color: $dark-theme-border-color;
+  --background-lightened-color: $dark-theme-background-lightened-color;
+  --shadow-color: $dark-theme-shadow-color;
+}
+
+/* Bright theme */
+[data-theme='bright'] {
+  --background-color: $bright-theme-background-color;
+  --font-color: $bright-theme-font-color;
+  --border-color: $bright-theme-border-color;
+  --background-lightened-color: $bright-theme-background-lightened-color;
+  --shadow-color: $bright-theme-shadow-color;
+}
+
+/* Global styles */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--font-color);
+  font-family: $font-family;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }

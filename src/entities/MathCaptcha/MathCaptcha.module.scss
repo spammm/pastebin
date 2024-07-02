@@ -7,15 +7,15 @@
 }
 
 .label {
-  color: $color-white;
+  color: var(--font-color);
   margin-bottom: 8px;
 }
 
 .errorInput {
-  border-color: $color-red;
+  border-color: $primary-color;
 }
 
 .error {
-  color: $color-red;
+  color: $primary-color;
   margin-top: 8px;
 }

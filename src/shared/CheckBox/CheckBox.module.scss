@@ -6,7 +6,7 @@
   cursor: pointer;
   font-family: $font-family;
   font-size: $font-size;
-  color: $font-color;
+  color: var(--font-color);
   user-select: none;
 
   input[type='checkbox'] {
@@ -18,10 +18,10 @@
     height: 20px;
     background: linear-gradient(
       145deg,
-      $color-black-gradient-start,
-      $color-black-gradient-end
+      var(--background-color),
+      var(--border-color)
     );
-    border: 2px solid $color-black-border;
+    border: 2px solid var(--border-color);
     border-radius: 4px;
     position: relative;
     transition: background 0.3s ease, border 0.3s ease;
@@ -31,8 +31,8 @@
   input[type='checkbox']:checked + .customCheckbox {
     background: linear-gradient(
       145deg,
-      lighten($color-black-gradient-start, 10%),
-      lighten($color-black-gradient-end, 10%)
+      var(--background-lightened-color),
+      var(--border-color)
     );
   }
 
@@ -43,7 +43,7 @@
     top: 2px;
     width: 6px;
     height: 12px;
-    border: solid $font-color;
+    border: solid var(--font-color);
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
   }
@@ -54,6 +54,11 @@
   }
 
   input[type='checkbox']:disabled + .customCheckbox::after {
-    border-color: lighten($color-black-gradient-start, 50%);
+    border-color: var(--border-lightened-color);
+  }
+
+  .label {
+    display: flex;
+    align-items: center;
   }
 }

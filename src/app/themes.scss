@@ -16,6 +16,15 @@ $dark-theme-border-color: #444;
 $dark-theme-background-lightened-color: #555;
 $dark-theme-shadow-color: rgba(255, 255, 255, 0.1);
 
+// Bright theme colors
+$bright-theme-background-color: #ffeb3b;
+$bright-theme-font-color: #212121;
+$bright-theme-border-color: #fbc02d;
+$bright-theme-background-lightened-color: #fff176;
+$bright-theme-shadow-color: rgba(33, 33, 33, 0.2);
+
 // Box shadows
-$box-shadow-default: 3px 3px 5px rgba(0, 0, 0, 0.2), -3px -3px 5px rgba(255, 255, 255, 0.1);
-$box-shadow-inset: inset 3px 3px 5px rgba(0, 0, 0, 0.2), inset -3px -3px 5px rgba(255, 255, 255, 0.1);
+$box-shadow-default: 3px 3px 5px rgba(0, 0, 0, 0.2),
+  -3px -3px 5px rgba(255, 255, 255, 0.1);
+$box-shadow-inset: inset 3px 3px 5px rgba(0, 0, 0, 0.2),
+  inset -3px -3px 5px rgba(255, 255, 255, 0.1);
