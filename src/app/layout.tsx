@@ -26,21 +26,17 @@ export default function RootLayout({
   connectToMongoDB();
   return (
     <html lang="ru" suppressHydrationWarning>
-      <ThemeProvider attribute="class">
-        <body
-          className={clsx(
-            roboto.className,
-            styles.body,
-            styles.wrapper,
-            'body'
-          )}
-          suppressHydrationWarning
-        >
+      <head />
+      <body
+        className={clsx(roboto.className, styles.body, styles.wrapper, 'body')}
+        suppressHydrationWarning
+      >
+        <ThemeProvider attribute="class">
           <Header className={styles.header} />
           <main className={styles.main}>{children}</main>
           <Footer className={styles.footer} />
-        </body>
-      </ThemeProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }

@@ -1,21 +1,21 @@
-@import '@/app/variables.scss';
+@import '@/app/globals.scss';
 
 .captchaWrapper {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  font-size: var(--font-size);
+  color: var(--font-color);
+  margin-bottom: 16px;
 }
 
 .label {
-  color: var(--font-color);
   margin-bottom: 8px;
-}
-
-.errorInput {
-  border-color: $primary-color;
+  font-size: var(--font-size);
+  color: var(--font-color);
 }
 
 .error {
-  color: $primary-color;
+  color: var(--error-color);
   margin-top: 8px;
 }

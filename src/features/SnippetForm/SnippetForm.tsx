@@ -76,8 +76,7 @@ const SnippetForm = () => {
         language={formik.values.language}
         height={'50vh'}
       />
-      <br />
-      <br />
+
       {renderError('code')}
 
       <div className={styles.controls}>
@@ -97,6 +96,7 @@ const SnippetForm = () => {
           onBlur={formik.handleBlur}
           color={formik.errors.author && 'red'}
           aria-invalid={!!formik.errors.author}
+          maxLength={20}
         />
         {renderError('author')}
 
@@ -109,6 +109,7 @@ const SnippetForm = () => {
           onBlur={formik.handleBlur}
           color={formik.errors.description && 'red'}
           aria-invalid={!!formik.errors.description}
+          maxLength={200}
         />
         {renderError('description')}
 

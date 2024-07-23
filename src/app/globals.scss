@@ -1,38 +1,15 @@
-@import '@/app/themes.scss';
+@import './themes.scss';
 
-/* Default (light) theme */
-:root {
-  --background-color: $light-theme-background-color;
-  --font-color: $light-theme-font-color;
-  --border-color: $light-theme-border-color;
-  --background-lightened-color: $light-theme-background-lightened-color;
-  --shadow-color: $light-theme-shadow-color;
-}
-
-/* Dark theme */
-[data-theme='dark'] {
-  --background-color: $dark-theme-background-color;
-  --font-color: $dark-theme-font-color;
-  --border-color: $dark-theme-border-color;
-  --background-lightened-color: $dark-theme-background-lightened-color;
-  --shadow-color: $dark-theme-shadow-color;
-}
-
-/* Bright theme */
-[data-theme='bright'] {
-  --background-color: $bright-theme-background-color;
-  --font-color: $bright-theme-font-color;
-  --border-color: $bright-theme-border-color;
-  --background-lightened-color: $bright-theme-background-lightened-color;
-  --shadow-color: $bright-theme-shadow-color;
-}
-
-/* Global styles */
-body {
+.body {
+  font-family: var(--font-family);
+  font-size: var(--font-size);
   margin: 0;
   padding: 0;
-  background-color: var(--background-color);
-  color: var(--font-color);
-  font-family: $font-family;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  --box-shadow-default: 3px 3px 5px rgba(0, 0, 0, 0.2),
+    -3px -3px 5px rgba(255, 255, 255, 0.1);
+  --box-shadow-inset: inset 3px 3px 5px rgba(0, 0, 0, 0.2),
+    inset -3px -3px 5px rgba(255, 255, 255, 0.1);
+  dd {
+    margin-inline-start: 0;
+  }
 }

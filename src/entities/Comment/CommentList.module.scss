@@ -1,22 +1,26 @@
-@import '@/app/variables.scss';
+@import '@/app/globals.scss';
 
 .commentSection {
-  background-color: var(--background-color);
+  padding: 2rem;
+  background-color: var(--background-lightened-color);
   border: 1px solid var(--border-color);
   border-radius: 5px;
-  padding: 20px;
-  box-shadow: var(--shadow-color);
-}
+  box-shadow: var(--box-shadow);
+  margin-bottom: 2rem;
 
-.addComment {
-  margin-bottom: 20px;
+  h2 {
+    color: var(--font-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
 }
 
 .commentList {
   list-style: none;
   padding: 0;
-}
+  margin: 0;
 
-.commentItem {
-  margin-bottom: 10px;
+  > li:not(:last-child) {
+    margin-bottom: 1rem;
+  }
 }

@@ -4,7 +4,6 @@ import { SnippetEditor } from '@/entities';
 import styles from './SnippetPage.module.scss';
 import { SnippetInfo } from '@/features';
 import CommentList from '@/entities/Comment/CommentList';
-
 interface SnippetPageProps {
   params: {
     shortUrl: string;
@@ -33,7 +32,10 @@ const SnippetPage: React.FC<SnippetPageProps> = async ({ params }) => {
       />
       <div className={styles.footer}>
         <SnippetInfo snippet={snippet} className={styles.info} />
-        <CommentList snippetId={snippet._id.toString()} className={styles.comments} />
+        <CommentList
+          snippetId={snippet._id.toString()}
+          className={styles.comments}
+        />
       </div>
     </div>
   );

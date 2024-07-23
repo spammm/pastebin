@@ -1,34 +1,45 @@
-@import '@/app/variables.scss';
+@import '@/app/globals.scss';
 
 .infoBlock {
-  padding: 20px;
+  padding: 1.5rem;
+  background-color: var(--background-lightened-color);
   border: 1px solid var(--border-color);
   border-radius: 5px;
-  background-color: var(--background-color);
-  color: var(--font-color);
-  box-shadow: var(--shadow-color);
-}
+  box-shadow: var(--box-shadow);
+  margin-bottom: 2rem;
 
-.title {
-  font-size: 1.5em;
-  margin-bottom: 10px;
-}
+  .title {
+    color: var(--font-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
 
-.content {
-  display: flex;
-  flex-direction: column;
-}
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 
-.item {
-  display: flex;
-  margin-bottom: 5px;
-}
+  .item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+    flex-wrap: wrap;
+    gap: 15px;
 
-.label {
-  font-weight: bold;
-  margin-right: 10px;
-}
+    &:last-child {
+      border-bottom: none;
+    }
+  }
 
-.value {
-  font-weight: normal;
+  .label {
+    color: var(--font-color);
+    font-weight: bold;
+  }
+
+  .value {
+    color: var(--font-color);
+    word-break: break-all;
+  }
 }

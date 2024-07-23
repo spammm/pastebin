@@ -1,31 +1,39 @@
-@import '@/app/variables.scss';
+@import '@/app/globals.scss';
 
 .inputWrapper {
   display: flex;
   flex-direction: column;
+  gap: 4px;
   margin-bottom: 16px;
 }
 
 .label {
-  margin-bottom: 8px;
-  font-size: $font-size;
+  font-size: 1rem;
   color: var(--font-color);
 }
 
 .input {
   padding: 10px;
+  font-size: 1rem;
   border: 2px solid var(--border-color);
-  border-radius: 5px;
+  border-radius: 4px;
   background-color: var(--background-color);
   color: var(--font-color);
   outline: none;
-  transition: background 0.3s ease, border 0.3s ease, color 0.3s ease;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 
   &:focus {
-    border-color: $primary-color;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px var(--primary-hover-color);
   }
 
   &.red {
-    border-color: $primary-color;
+    border-color: var(--error-color);
+    box-shadow: 0 0 0 4px var(--error-hover-color);
+  }
+
+  &[aria-invalid='true'] {
+    border-color: var(--error-color);
+    box-shadow: 0 0 0 4px var(--error-hover-color);
   }
 }

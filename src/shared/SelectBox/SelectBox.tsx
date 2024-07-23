@@ -97,11 +97,15 @@ const SelectBox: React.FC<SelectBoxProps> = ({
       className={clsx(styles.selectWrapper, className)}
       onKeyDown={handleKeyDown}
       tabIndex={0}
-      aria-expanded={isOpen}
       aria-haspopup="listbox"
+      aria-labelledby={id || `${uniqueId}-label`}
     >
       {label && (
-        <label htmlFor={id || uniqueId} className={styles.label}>
+        <label
+          htmlFor={id || uniqueId}
+          className={styles.label}
+          id={`${uniqueId}-label`}
+        >
           {label}
         </label>
       )}
@@ -111,6 +115,8 @@ const SelectBox: React.FC<SelectBoxProps> = ({
         role="combobox"
         aria-controls="dropdown-list"
         aria-expanded={isOpen}
+        aria-haspopup="listbox"
+        aria-labelledby={id || `${uniqueId}-label`}
       >
         <div
           className={clsx(styles.selected, {

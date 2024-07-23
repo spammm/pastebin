@@ -1,25 +1,12 @@
-<svg
-    width="64"
-    height="64"
-    viewBox="0 0 64 64"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
->
-    <rect x="8" y="8" width="48" height="48" rx="4" fill="#0070f3"/>
-    <path
-        d="M20 24 L28 32 L20 40"
-        stroke="white"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-    />
-    <path
-        d="M44 24 L36 32 L44 40"
-        stroke="white"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-    />
-    <rect x="12" y="16" width="40" height="4" fill="white" />
-    <rect x="12" y="44" width="40" height="4" fill="white" />
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="8" fill="#0078D4"/>
+  <text x="50%" y="50%" text-anchor="middle" fill="white" font-size="24" font-family="Arial" dy=".3em">PB</text>
+  <foreignObject x="8" y="8" width="48" height="48">
+    <div xmlns="http://www.w3.org/1999/xhtml" style="font-size: 10px; color: white; opacity: 0.3; overflow: hidden;">
+      &lt;div&gt;function hello() {&lt;/div&gt;
+      &lt;div&gt;console.log("Hello, world!");&lt;/div&gt;
+      &lt;div&gt;}&lt;/div&gt;
+      &lt;div&gt;hello();&lt;/div&gt;
+    </div>
+  </foreignObject>
 </svg>

@@ -1,40 +1,30 @@
-@import '@/app/variables.scss';
-
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  background-color: var(--background-color);
-  color: var(--font-color);
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
+  gap: 20px;
+  background-color: var(--background-lightened-color);
   padding: 20px;
-  box-shadow: var(--shadow-color);
-  position: initial;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow-default);
 }
 
 .controls {
-  width: 100%;
-  max-width: 400px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  align-items: center;
+}
+
+.controls > * {
+  max-width: 600px;
+  width: 100%;
 }
 
 .error {
-  color: $primary-color;
-  font-size: 16px;
-  margin-top: -25px;
-  margin-bottom: 0;
+  color: var(--error-color);
+  font-size: 0.875rem;
 }
 
-.code_error {
-  margin-top: 0;
-}
-
-@media screen and (max-width: 700px) {
-  .controls {
-    box-sizing: border-box;
-    width: 100%;
-  }
+.snippetEditorContainer {
+  width: 100%;
 }

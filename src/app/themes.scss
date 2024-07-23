@@ -1,30 +1,47 @@
-// Font
-$font-family: 'Roboto', sans-serif;
-$font-size: 18px;
+.light-theme {
+  --background-color: #f0f0f0;
+  --font-color: #333;
+  --border-color: #ccc;
+  --background-lightened-color: #e0e0e0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --primary-color: #6200ea;
+  --primary-hover-color: #7c4dff;
+  --primary-font-color: #ffffff;
+  --error-color: #b00020;
+  --error-hover-color: #9b0000;
+  --secondary-color: #6c757d;
+  --secondary-font-color: #ffffff;
+  --secondary-hover-color: #5a6268;
+}
 
-// Light theme colors
-$light-theme-background-color: #f0f0f0;
-$light-theme-font-color: #333;
-$light-theme-border-color: #ccc;
-$light-theme-background-lightened-color: #e0e0e0;
-$light-theme-shadow-color: rgba(0, 0, 0, 0.1);
+.dark-theme {
+  --background-color: #333;
+  --font-color: #f0f0f0;
+  --border-color: #444;
+  --background-lightened-color: #555;
+  --shadow-color: rgba(255, 255, 255, 0.1);
+  --primary-color: #cebae6;
+  --primary-hover-color: rgb(197, 180, 214);
+  --primary-font-color: #000000;
+  --error-color: #cf6679;
+  --error-hover-color: #b5495b;
+  --secondary-color: #495057;
+  --secondary-font-color: #ffffff;
+  --secondary-hover-color: #343a40;
+}
 
-// Dark theme colors
-$dark-theme-background-color: #333;
-$dark-theme-font-color: #f0f0f0;
-$dark-theme-border-color: #444;
-$dark-theme-background-lightened-color: #555;
-$dark-theme-shadow-color: rgba(255, 255, 255, 0.1);
-
-// Bright theme colors
-$bright-theme-background-color: #ffeb3b;
-$bright-theme-font-color: #212121;
-$bright-theme-border-color: #fbc02d;
-$bright-theme-background-lightened-color: #fff176;
-$bright-theme-shadow-color: rgba(33, 33, 33, 0.2);
-
-// Box shadows
-$box-shadow-default: 3px 3px 5px rgba(0, 0, 0, 0.2),
-  -3px -3px 5px rgba(255, 255, 255, 0.1);
-$box-shadow-inset: inset 3px 3px 5px rgba(0, 0, 0, 0.2),
-  inset -3px -3px 5px rgba(255, 255, 255, 0.1);
+.bright-theme {
+  --background-color: #e0f7fa;
+  --font-color: #0277bd;
+  --border-color: #4dd0e1;
+  --background-lightened-color: #b2ebf2;
+  --shadow-color: rgba(2, 119, 189, 0.2);
+  --primary-color: #0288d1;
+  --primary-hover-color: #03a9f4;
+  --primary-font-color: #ffffff;
+  --error-color: #d32f2f;
+  --error-hover-color: #c62828;
+  --secondary-color: #039be5;
+  --secondary-font-color: #ffffff;
+  --secondary-hover-color: #0277bd;
+}

@@ -1,5 +1,17 @@
-@import '@/app/variables.scss';
+@import '@/app/globals.scss';
 
 .themeToggle {
-  background: none;
+  background: var(--background-color);
+  color: var(--font-color);
+  border: 2px solid var(--border-color);
+  border-radius: 20px;
+  padding: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.themeToggle:hover {
+  background: var(--background-lightened-color);
+  border-color: var(--border-hover-color);
 }

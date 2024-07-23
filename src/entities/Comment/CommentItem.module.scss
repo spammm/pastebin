@@ -1,25 +1,37 @@
-@import '@/app/variables.scss';
+@import '@/app/globals.scss';
 
 .commentItem {
-  border-bottom: 1px solid var(--border-color);
-  padding: 10px 0;
-  color: var(--font-color);
+  list-style: none;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: var(--background-lightened-color);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  box-shadow: var(--box-shadow);
+
+  &:hover {
+    background-color: var(--background-color);
+  }
 }
 
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
 }
 
 .author {
   font-weight: bold;
+  color: var(--primary-color);
 }
 
 .date {
-  font-size: 0.875em;
+  font-size: 0.875rem;
   color: var(--font-color);
 }
 
 .content {
-  margin-top: 5px;
+  font-size: var(--font-size);
+  color: var(--font-color);
 }

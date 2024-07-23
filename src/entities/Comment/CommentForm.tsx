@@ -66,6 +66,7 @@ export const CommentForm: React.FC<CommentFormProps> = ({ onAddComment }) => {
           aria-invalid={formik.errors.author ? 'true' : 'false'}
           aria-describedby="authorError"
           color={formik.errors.author ? 'red' : undefined}
+          maxLength={20}
         />
         {formik.touched.author && formik.errors.author && (
           <div id="authorError" className={styles.error} role="alert">
@@ -86,6 +87,7 @@ export const CommentForm: React.FC<CommentFormProps> = ({ onAddComment }) => {
           aria-invalid={formik.errors.content ? 'true' : 'false'}
           aria-describedby="contentError"
           color={formik.errors.content ? 'red' : undefined}
+          maxLength={200}
         />
         <button
           type="button"

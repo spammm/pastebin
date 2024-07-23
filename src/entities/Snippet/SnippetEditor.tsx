@@ -1,5 +1,6 @@
 'use client';
 import Editor, { EditorProps } from '@monaco-editor/react';
+import { useTheme } from 'next-themes';
 import { MonacoLanguageValue } from './monacoLanguages';
 import MonacoSkeleton from './MonacoSkeleton';
 
@@ -8,11 +9,11 @@ interface SnippetEditorProps extends EditorProps {
 }
 
 const SnippetEditor: React.FC<SnippetEditorProps> = ({
-  theme = 'vs-dark',
   options,
   language,
   ...props
 }) => {
+  const { theme } = useTheme();
   return (
     <Editor
       language={language}
@@ -21,7 +22,7 @@ const SnippetEditor: React.FC<SnippetEditorProps> = ({
           automaticLayout: true,
         }
       }
-      theme={theme}
+      theme={theme == 'dark-theme' ? 'vs-dark' : 'vs'}
       width={props['width'] || '99%'}
       height={props['height'] || '100%'}
       loading={props['loading'] || <MonacoSkeleton />}

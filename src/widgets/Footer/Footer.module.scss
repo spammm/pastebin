@@ -1,28 +1,21 @@
-@import '@/app/variables.scss';
+@import '@/app/globals.scss';
 
 .footer {
-  background-color: var(--background-color);
+  background: var(--background-color);
   color: var(--font-color);
-  border-top: 1px solid var(--border-color);
-  padding: 1rem 0;
-  box-shadow: var(--shadow-color);
-
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-  }
-
-  .copy {
-    font-size: 0.875rem;
-  }
+  padding: 20px 0;
+  text-align: center;
+  border-top: 2px solid var(--border-color);
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
 }
 
-@media (max-width: 768px) {
-  .container {
-    text-align: center;
-  }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.copy {
+  margin: 0;
+  font-size: 1rem;
 }

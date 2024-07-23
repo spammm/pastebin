@@ -1,100 +1,30 @@
-@import '@/app/variables.scss';
-
+/* styles/Button.module.scss */
 .button {
-  border: 2px solid;
-  border-radius: 20px;
-  box-shadow: var(--shadow-color);
-  color: var(--font-color);
-  cursor: pointer;
-  font-size: $font-size;
+  display: inline-block;
   padding: 10px 20px;
-  text-align: center;
-  text-transform: uppercase;
-  transition: background 0.3s ease;
-
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
+  border-radius: 4px;
+  font-size: var(--font-size);
+  font-family: var(--font-family);
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
 
   &.black {
-    background: linear-gradient(
-      145deg,
-      var(--background-color),
-      var(--border-color)
-    );
-    border-color: var(--border-color);
-
-    &:hover:not(:disabled) {
-      background: linear-gradient(
-        145deg,
-        var(--background-lightened-color),
-        var(--background-color)
-      );
-    }
-
-    &:active:not(:disabled) {
-      box-shadow: var(--shadow-color);
-    }
+    background-color: var(--background-color);
+    color: var(--font-color);
   }
 
   &.white {
-    background: linear-gradient(
-      145deg,
-      var(--background-color),
-      var(--background-lightened-color)
-    );
-    border-color: var(--border-color);
-    color: var(--font-color);
-
-    &:hover:not(:disabled) {
-      background: linear-gradient(
-        145deg,
-        var(--background-lightened-color),
-        var(--background-color)
-      );
-    }
-
-    &:active:not(:disabled) {
-      box-shadow: var(--shadow-color);
-    }
+    background-color: var(--background-color-light);
+    color: var(--font-color-light);
   }
 
   &.red {
-    background: linear-gradient(145deg, $primary-color, $primary-color-dark);
-    border-color: $primary-color-border;
-
-    &:hover:not(:disabled) {
-      background: linear-gradient(
-        145deg,
-        lighten($primary-color, 10%),
-        lighten($primary-color-dark, 10%)
-      );
-    }
-
-    &:active:not(:disabled) {
-      box-shadow: $box-shadow-inset-red;
-    }
+    background-color: var(--error-color);
+    color: var(--font-color-light);
   }
 
   &.green {
-    background: linear-gradient(
-      145deg,
-      $secondary-color,
-      $secondary-color-dark
-    );
-    border-color: $secondary-color-border;
-
-    &:hover:not(:disabled) {
-      background: linear-gradient(
-        145deg,
-        lighten($secondary-color, 10%),
-        lighten($secondary-color-dark, 10%)
-      );
-    }
-
-    &:active:not(:disabled) {
-      box-shadow: $box-shadow-inset-green;
-    }
+    background-color: var(--primary-color);
+    color: var(--font-color);
   }
 }

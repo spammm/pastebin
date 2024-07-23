@@ -1,58 +1,61 @@
-@import '@/app/variables.scss';
+@import '@/app/globals.scss';
 
 .addComment {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 16px;
   background-color: var(--background-color);
-  color: var(--font-color);
-  border: 1px solid var(--border-color);
-  border-radius: 5px;
-  padding: 20px;
-  box-shadow: var(--shadow-color);
-}
-
-.textarea {
-  width: 100%;
+  padding: 16px;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow-default);
 }
 
 .inputBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
   position: relative;
 }
 
-.emojiPickerButton {
-  position: absolute;
-  right: 10px;
-  top: 10px;
-  background: var(--background-color);
-  border: none;
-  cursor: pointer;
-  color: var(--font-color);
-  font-size: 1.5rem;
-  transition: background 0.3s ease, color 0.3s ease;
-
-  &:hover {
-    background: var(--background-lightened-color);
-    color: var(--font-color);
+.textarea {
+  min-height: 100px;
+  margin-bottom: 0;
+  textarea {
+    resize: vertical;
   }
+}
+
+.emojiPickerButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: left;
+  margin-top: -25px;
+  width: 2em;
+}
+
+.emojiPickerButton:hover,
+.emojiPickerButton:focus {
+  background-color: var(--secondary-hover-color);
 }
 
 .emojiPicker {
   position: absolute;
+  z-index: 1000;
+  margin-top: 8px;
 }
 
 .error {
-  color: $primary-color;
-  margin-top: 0.2rem;
-  font-size: 0.875rem;
+  color: var(--error-color);
+  font-size: 14px;
 }
 
 .captchaContainer {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+  margin-top: 16px;
 }
 
 .submit {
-  align-self: baseline;
+  align-self: flex-start;
 }

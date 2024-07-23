@@ -36,20 +36,28 @@ const SnippetList: React.FC = () => {
     }
   }, [inView, hasMore, loading]);
 
-  const render = snippets.map((snip) => (
-    <li
-      key={snip.id}
-      className={styles.listItem}
-      aria-labelledby={`snippet-title-${snip.id}`}
-    >
-      <article>
-        <h2 id={`snippet-title-${snip.id}`}>
-          <Link href={`/${snip.shortUrl}`}>{snip.author} </Link>
-        </h2>
-        <p>{snip.description}</p>
-      </article>
-    </li>
-  ));
+  const render = snippets.map((snip) => {
+    const createdAt = new Date(snip.createdAt).toLocaleDateString();
+    return (
+      <li
+        key={snip.id}
+        className={styles.listItem}
+        aria-labelledby={`snippet-title-${snip.id}`}
+      >
+        <Link href={`/${snip.shortUrl}`} className={styles.linkWrapper}>
+          <article>
+            <h2 id={`snippet-title-${snip.id}`} className={styles.title}>
+              {snip.author}
+              <time className={styles.date} dateTime={snip.createdAt}>
+                {createdAt}
+              </time>
+            </h2>
+            <p className={styles.description}>{snip.description}</p>
+          </article>
+        </Link>
+      </li>
+    );
+  });
 
   return (
     <div>

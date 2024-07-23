@@ -1,30 +1,35 @@
-@import '@/app/variables.scss';
+@import '@/app/globals.scss';
 
 .skeletonList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 16px;
 }
 
-.skeletonItem {
-  background: linear-gradient(
-    90deg,
-    var(--background-color) 25%,
-    var(--background-lightened-color) 37%,
-    // New variable for lightened background
-    var(--background-color) 63%
-  );
-  background-size: 200% 100%;
-  border-radius: 4px;
+.skeletonListItem {
+  background-color: var(--background-lightened-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
   padding: 16px;
-  animation: shimmer 1.5s infinite;
+  box-shadow: var(--box-shadow-default);
+  overflow: hidden;
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
+.skeletonArticle {
+  display: grid;
+  gap: 8px;
+}
+
+.skeletonTitle {
+  height: 24px;
+  background-color: var(--border-color);
+  border-radius: 4px;
+}
+
+.skeletonDescription {
+  height: 16px;
+  background-color: var(--border-color);
+  border-radius: 4px;
 }
