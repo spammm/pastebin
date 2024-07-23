@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import styles from './CommentList.module.scss';
 import { useComments } from '@/hooks/useComments';
 import { CommentForm } from './CommentForm';
-import { CommentItem } from './CommentItem';
+import CommentItem from './CommentItem';
 
 interface CommentListProps {
   snippetId: string;

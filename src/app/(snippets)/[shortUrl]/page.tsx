@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchSnippetByShortUrl, fetchSnippets } from '@/services/api';
+import { fetchSnippetByShortUrl, fetchSnippets } from '@/services/api/';
 import { SnippetEditor } from '@/entities';
 import styles from './SnippetPage.module.scss';
 import { SnippetInfo } from '@/features';

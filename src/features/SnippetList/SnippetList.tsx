@@ -1,11 +1,12 @@
 'use client';
-import { fetchSnippets } from '@/services/api';
+import { fetchSnippets } from '@/services/api/';
 import React, { useState, useEffect, useCallback } from 'react';
-import Link from 'next/link';
+
 import styles from './SnippetList.module.scss';
 import { Loader } from '@/shared';
 import { useInView } from 'react-intersection-observer';
 import { SnippetType } from '@/entities';
+import SnippetListItem from './SnippetListItem';
 
 const SnippetList: React.FC = () => {
   const [snippets, setSnippets] = useState<SnippetType[]>([]);
@@ -36,32 +37,13 @@ const SnippetList: React.FC = () => {
     }
   }, [inView, hasMore, loading]);
 
-  const render = snippets.map((snip) => {
-    const createdAt = new Date(snip.createdAt).toLocaleDateString();
-    return (
-      <li
-        key={snip.id}
-        className={styles.listItem}
-        aria-labelledby={`snippet-title-${snip.id}`}
-      >
-        <Link href={`/${snip.shortUrl}`} className={styles.linkWrapper}>
-          <article>
-            <h2 id={`snippet-title-${snip.id}`} className={styles.title}>
-              {snip.author}
-              <time className={styles.date} dateTime={snip.createdAt}>
-                {createdAt}
-              </time>
-            </h2>
-            <p className={styles.description}>{snip.description}</p>
-          </article>
-        </Link>
-      </li>
-    );
+  const renderSnippets = snippets.map((snippet) => {
+    return <SnippetListItem key={snippet.shortUrl} snippet={snippet} />;
   });
 
   return (
     <div>
-      <ul className={styles.list}>{render}</ul>
+      <ul className={styles.list}>{renderSnippets}</ul>
       {loading && <Loader />}
       <div ref={ref}></div>
     </div>

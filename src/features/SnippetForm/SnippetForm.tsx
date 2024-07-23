@@ -2,31 +2,25 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import { useRouter } from 'next/navigation';
-import { Button, CheckBox, SelectBox, TextInput } from '@/shared';
+
+import {
+  Alert,
+  Button,
+  CheckBox,
+  Loader,
+  SelectBox,
+  TextInput,
+} from '@/shared';
 import { MathCaptcha, SnippetEditor, SnippetType } from '@/entities';
 import monacoLanguages from '@/entities/Snippet/monacoLanguages';
+import { createSnippet } from '@/services/api/';
+import { SnippetFormValidate as validate } from './SnippetFormValidate';
 import styles from './SnippetForm.module.scss';
-import { createSnippet } from '@/services/api';
-
-const validate = (values: Omit<SnippetType, 'id' | 'shortUrl'>) => {
-  const errors: Record<string, string> = {};
-  if (!values.code) {
-    errors.code = 'Код обязателен';
-  }
-  if (!values.language) {
-    errors.language = 'Синтаксис обязателен';
-  }
-  if (!values.author) {
-    errors.author = 'Автор обязателен';
-  }
-  if (!values.description) {
-    errors.description = 'Комментарий обязателен';
-  }
-  return errors;
-};
 
 const SnippetForm = () => {
   const [captchaValid, setCaptchaValid] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
   const formik = useFormik({
@@ -43,8 +37,16 @@ const SnippetForm = () => {
         alert('Пожалуйста, подтвердите, что вы не робот.');
         return;
       }
-      const snippet = await createSnippet(values);
-      router.push(`/${snippet.shortUrl}`);
+      setLoading(true);
+      setError(null);
+      try {
+        const snippet = await createSnippet(values);
+        setLoading(false);
+        router.push(`/${snippet.shortUrl}`);
+      } catch (error) {
+        setLoading(false);
+        setError('Ошибка при создании сниппета. Попробуйте снова.');
+      }
     },
   });
 
@@ -58,6 +60,7 @@ const SnippetForm = () => {
 
   return (
     <form className={styles.form} onSubmit={formik.handleSubmit}>
+      {error && <Alert message={error} type="error" />}
       <div className={styles.controls}>
         <SelectBox
           name="language"
@@ -115,7 +118,9 @@ const SnippetForm = () => {
 
         <MathCaptcha onValidate={setCaptchaValid} />
 
-        <Button type="submit">Опубликовать</Button>
+        <Button type="submit" disabled={loading}>
+          {loading ? <Loader /> : 'Опубликовать'}
+        </Button>
       </div>
     </form>
   );

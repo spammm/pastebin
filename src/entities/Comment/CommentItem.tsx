@@ -1,6 +1,7 @@
 import React from 'react';
 import { CommentType } from '@/entities/Comment/model';
 import styles from './CommentItem.module.scss';
+import { LocalDataTime } from '@/shared';
 
 interface CommentItemProps {
   comment: CommentType;
@@ -9,31 +10,17 @@ interface CommentItemProps {
 export const CommentItem: React.FC<CommentItemProps> = ({ comment }) => {
   const createdAt = comment.createdAt ? new Date(comment.createdAt) : null;
 
-  const dateOptions: Intl.DateTimeFormatOptions = {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  };
-
-  const timeOptions: Intl.DateTimeFormatOptions = {
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-  };
-
   return (
     <li className={styles.commentItem}>
-      <header className={styles.header}>
+      <div className={styles.header}>
         <span className={styles.author}>{comment.author}</span>
         {createdAt && (
-          <time className={styles.date} dateTime={createdAt.toISOString()}>
-            {' '}
-            ({createdAt.toLocaleDateString(undefined, dateOptions)}{' '}
-            {createdAt.toLocaleTimeString(undefined, timeOptions)})
-          </time>
+          <LocalDataTime date={createdAt} className={styles.date} />
         )}
-      </header>
-      <article className={styles.content}>{comment.content}</article>
+      </div>
+      <p className={styles.content}>{comment.content}</p>
     </li>
   );
 };
+
+export default React.memo(CommentItem);

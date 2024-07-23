@@ -15,7 +15,7 @@ const Footer: React.FC<HTMLAttributes<HTMLDivElement>> = ({
     >
       <div className={styles.container}>
         <p className={styles.copy}>
-          © {new Date().getFullYear()} Pastebin. All rights reserved.
+          © {new Date().getFullYear()} AltPastebin. All rights reserved.
         </p>
       </div>
     </footer>

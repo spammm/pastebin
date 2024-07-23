@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchComments, createComment } from '@/services/api';
+import { fetchComments, createComment } from '@/services/api/';
 import { CommentType } from '@/entities/Comment/model';
 
 export const useComments = (snippetId: string) => {

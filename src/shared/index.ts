@@ -5,6 +5,8 @@ import SelectBox from './SelectBox/SelectBox';
 import InfoBlock from './InfoBlock/InfoBlock';
 import Loader from './Loader/Loader';
 import ThemeToggle from './ThemeToggle/ThemeToggle';
+import Alert from './Alert/Alert';
+import { LocalDataTime } from './LocalDataTime/LocalDataTime';
 
 export {
   Button,
@@ -14,4 +16,6 @@ export {
   InfoBlock,
   Loader,
   ThemeToggle,
+  Alert,
+  LocalDataTime,
 };

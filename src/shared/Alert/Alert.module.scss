@@ -1,0 +1,49 @@
+@import '@/app/globals.scss';
+
+.alert {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--background-lightened-color);
+  color: var(--font-color);
+  border: 1px solid var(--border-color);
+  padding: 16px;
+  margin: 16px;
+  border-radius: 4px;
+  box-shadow: var(--box-shadow-default);
+  z-index: 1000;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
+  &.hidden {
+    transform: translateX(-50%) translateY(-100%);
+    opacity: 0;
+  }
+
+  &.success {
+    background-color: var(--primary-color);
+    color: var(--primary-font-color);
+  }
+
+  &.error {
+    background-color: var(--error-color);
+    color: var(--primary-font-color);
+  }
+
+  &.info {
+    background-color: var(--secondary-color);
+    color: var(--primary-font-color);
+  }
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.5rem;
+  line-height: 1;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+}

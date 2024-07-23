@@ -1,10 +1,10 @@
-import React, { HTMLAttributes, useId } from 'react';
+import React, { Fragment, HTMLAttributes, ReactNode, useId } from 'react';
 import styles from './InfoBlock.module.scss';
 import clsx from 'clsx';
 
 interface InfoBlockProps extends HTMLAttributes<HTMLDivElement> {
   title: string;
-  items: { label: string; value: string }[];
+  items: { label: string; value: string | ReactNode }[];
   className?: string;
 }
 
