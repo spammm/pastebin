@@ -27,12 +27,12 @@ const Header: React.FC<HTMLAttributes<HTMLDivElement>> = ({
           <ul className={styles.navList}>
             <li className={styles.navItem}>
               <Link href="/" className={styles.navLink}>
-                Home
+                Главна
               </Link>
             </li>
             <li className={styles.navItem}>
               <Link href="/create" className={styles.navLink}>
-                Create
+                Создать новый сниппет
               </Link>
             </li>
           </ul>
