@@ -88,3 +88,4 @@ npm run build
 ```sh
 npm run test
 ```
+demo [pastebin.nickdev.ru](https://pastebin.nickdev.ru/)
