@@ -11,7 +11,7 @@ export const LocalDataTime: React.FC<LocalDataTimeProps> = ({
 }) => {
   return (
     <time dateTime={date.toLocaleString()} {...props}>
-      {getDate(date)} {getTime(date)}
+      <span>{getDate(date)}</span> <span>{getTime(date)}</span>
     </time>
   );
 };

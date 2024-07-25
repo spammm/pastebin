@@ -19,7 +19,7 @@ const SnippetPage: React.FC<SnippetPageProps> = async ({ params }) => {
 
   return (
     <div className={styles.wrapper}>
-      <h1 className={styles.header}>Сниппет автора {snippet.author}</h1>
+      <h1 className={styles.header}>От: {snippet.author}</h1>
       <SnippetEditor
         height={'50vh'}
         defaultLanguage={snippet.language}

@@ -149,7 +149,7 @@ const SelectBox: React.FC<SelectBoxProps> = ({
                   onClick={() => handleOptionClick(option.value)}
                   role="option"
                   aria-selected={option.value === props.value}
-                  tabIndex={-1} // Make the option focusable
+                  tabIndex={-1} 
                   ref={(el) => {
                     optionsRefs.current[index] = el;
                   }}

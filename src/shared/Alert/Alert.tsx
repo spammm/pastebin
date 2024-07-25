@@ -21,13 +21,21 @@ const Alert: React.FC<AlertProps> = ({
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(false);
-      setTimeout(() => {
+      const removeTimeout = setTimeout(() => {
         if (onClose) onClose();
       }, 300);
+      return () => clearTimeout(removeTimeout);
     }, duration);
 
     return () => clearTimeout(timer);
   }, [duration, onClose]);
+
+  const handleClose = () => {
+    setIsVisible(false);
+    setTimeout(() => {
+      if (onClose) onClose();
+    }, 300);
+  };
 
   return (
     <div
@@ -39,7 +47,7 @@ const Alert: React.FC<AlertProps> = ({
     >
       {message}
       <button
-        onClick={() => setIsVisible(false)}
+        onClick={handleClose}
         aria-label="Close alert"
         className={styles.closeButton}
       >

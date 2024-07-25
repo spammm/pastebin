@@ -24,14 +24,20 @@
 .author {
   font-weight: bold;
   color: var(--primary-color);
+  word-break: break-all;
 }
 
 .date {
+  min-width: 95px;
   font-size: 0.875rem;
   color: var(--font-color);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .content {
   font-size: var(--font-size);
   color: var(--font-color);
+  word-break: break-all;
 }

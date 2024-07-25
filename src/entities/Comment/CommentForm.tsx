@@ -4,7 +4,7 @@ import Picker from '@emoji-mart/react';
 import data from '@emoji-mart/data';
 import ru from '@emoji-mart/data/i18n/ru.json';
 
-import MathCaptcha from '@/entities/MathCaptcha/MathCaptcha';
+import { MathCaptcha } from '@/entities';
 import { TextInput, Button } from '@/shared';
 import styles from './CommentForm.module.scss';
 
@@ -53,7 +53,7 @@ export const CommentForm: React.FC<CommentFormProps> = ({ onAddComment }) => {
       aria-labelledby="commentFormTitle"
     >
       <h2 id="commentFormTitle" className="sr-only">
-        Добавить комментарий
+        Оставьте свой комментарий
       </h2>
       <div className={styles.inputBlock}>
         <TextInput

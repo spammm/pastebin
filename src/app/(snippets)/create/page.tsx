@@ -5,7 +5,7 @@ import styles from './CreateSnippet.module.scss';
 const CreateSnippet = () => {
   return (
     <div className={styles.wrapper}>
-      <h1>Опубликовать новый сниппет</h1>
+      <h1>Создать сниппет</h1>
       <SnippetForm />
     </div>
   );

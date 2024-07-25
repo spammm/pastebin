@@ -7,7 +7,7 @@ interface MathCaptchaProps {
   onValidate: (isValid: boolean) => void;
 }
 
-const MathCaptcha: React.FC<MathCaptchaProps> = ({ onValidate }) => {
+export const MathCaptcha: React.FC<MathCaptchaProps> = ({ onValidate }) => {
   const [firstNumber, setFirstNumber] = useState<number>(0);
   const [secondNumber, setSecondNumber] = useState<number>(0);
   const [userInput, setUserInput] = useState<string>('');

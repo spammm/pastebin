@@ -4,7 +4,7 @@ import React, { Suspense } from 'react';
 const SnippetsListPage = async () => {
   return (
     <div>
-      <h1>Последние опубликованные сниппеты</h1>
+      <h1>Последние сниппеты</h1>
       <Suspense fallback={<SnipperListSkeleton />}>
         <SnippetList />
       </Suspense>

@@ -13,7 +13,7 @@ import {
 } from '@/shared';
 import { MathCaptcha, SnippetEditor, SnippetType } from '@/entities';
 import monacoLanguages from '@/entities/Snippet/monacoLanguages';
-import { createSnippet } from '@/services/api/';
+import { createSnippet } from '@/services/api';
 import { SnippetFormValidate as validate } from './SnippetFormValidate';
 import styles from './SnippetForm.module.scss';
 
@@ -59,70 +59,72 @@ const SnippetForm = () => {
     ) : null;
 
   return (
-    <form className={styles.form} onSubmit={formik.handleSubmit}>
+    <>
       {error && <Alert message={error} type="error" />}
-      <div className={styles.controls}>
-        <SelectBox
-          name="language"
-          options={monacoLanguages}
-          label="Выберите синтаксис подсветки"
-          value={formik.values.language}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
-        {renderError('language')}
-      </div>
+      <form className={styles.form} onSubmit={formik.handleSubmit}>
+        <div className={styles.controls}>
+          <SelectBox
+            name="language"
+            options={monacoLanguages}
+            label="Выберите синтаксис подсветки"
+            value={formik.values.language}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          {renderError('language')}
+        </div>
 
-      <SnippetEditor
-        value={formik.values.code}
-        onChange={(value) => formik.setFieldValue('code', value)}
-        language={formik.values.language}
-        height={'50vh'}
-      />
-
-      {renderError('code')}
-
-      <div className={styles.controls}>
-        <CheckBox
-          name="isPrivate"
-          label="Сделать сниппет не публичным"
-          checked={formik.values.isPrivate}
-          onChange={formik.handleChange}
+        <SnippetEditor
+          value={formik.values.code}
+          onChange={(value) => formik.setFieldValue('code', value)}
+          language={formik.values.language}
+          height={'50vh'}
         />
 
-        <TextInput
-          name="author"
-          placeholder="Введите свое имя"
-          label="Автор"
-          value={formik.values.author}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          color={formik.errors.author && 'red'}
-          aria-invalid={!!formik.errors.author}
-          maxLength={20}
-        />
-        {renderError('author')}
+        {renderError('code')}
 
-        <TextInput
-          name="description"
-          placeholder="Оставьте пояснение"
-          label="Комментарий автора"
-          value={formik.values.description}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          color={formik.errors.description && 'red'}
-          aria-invalid={!!formik.errors.description}
-          maxLength={200}
-        />
-        {renderError('description')}
+        <div className={styles.controls}>
+          <CheckBox
+            name="isPrivate"
+            label="Сделать сниппет не публичным"
+            checked={formik.values.isPrivate}
+            onChange={formik.handleChange}
+          />
 
-        <MathCaptcha onValidate={setCaptchaValid} />
+          <TextInput
+            name="author"
+            placeholder="Введите свое имя"
+            label="Автор"
+            value={formik.values.author}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            color={formik.errors.author && 'red'}
+            aria-invalid={!!formik.errors.author}
+            maxLength={20}
+          />
+          {renderError('author')}
 
-        <Button type="submit" disabled={loading}>
-          {loading ? <Loader /> : 'Опубликовать'}
-        </Button>
-      </div>
-    </form>
+          <TextInput
+            name="description"
+            placeholder="Оставьте пояснение"
+            label="Комментарий автора"
+            value={formik.values.description}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            color={formik.errors.description && 'red'}
+            aria-invalid={!!formik.errors.description}
+            maxLength={200}
+          />
+          {renderError('description')}
+
+          <MathCaptcha onValidate={setCaptchaValid} />
+
+          <Button type="submit" disabled={loading}>
+            {loading ? <Loader /> : 'Опубликовать'}
+          </Button>
+        </div>
+      </form>
+    </>
   );
 };
 

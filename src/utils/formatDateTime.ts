@@ -7,7 +7,6 @@ const dateOptions: Intl.DateTimeFormatOptions = {
 const timeOptions: Intl.DateTimeFormatOptions = {
   hour: '2-digit',
   minute: '2-digit',
-  second: '2-digit',
 };
 
 export const getDate = (date: Date) => {

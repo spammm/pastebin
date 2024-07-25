@@ -1,4 +1,4 @@
-import React, { Fragment, HTMLAttributes, ReactNode, useId } from 'react';
+import React, { HTMLAttributes, ReactNode, useId } from 'react';
 import styles from './InfoBlock.module.scss';
 import clsx from 'clsx';
 
