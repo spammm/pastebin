@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect, useCallback, useRef, useId } from 'react';
 import clsx from 'clsx';
-import styles from './SelectBox.module.scss';
+import styles from './Selectbox.module.scss';
 
 interface SelectBoxProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
   label?: string;
