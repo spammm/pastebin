@@ -1,6 +1,6 @@
-import clsx from 'clsx';
 import React, { InputHTMLAttributes, useId } from 'react';
-import styles from './Checkbox.module.scss';
+import clsx from 'clsx';
+import styles from './CheckBox.module.scss';
 
 interface CheckBoxProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value'> {

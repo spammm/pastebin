@@ -1,6 +1,6 @@
 'use client';
-import clsx from 'clsx';
 import React, { useState, useEffect, useCallback, useRef, useId } from 'react';
+import clsx from 'clsx';
 import styles from './SelectBox.module.scss';
 
 interface SelectBoxProps extends React.SelectHTMLAttributes<HTMLSelectElement> {
@@ -149,7 +149,7 @@ const SelectBox: React.FC<SelectBoxProps> = ({
                   onClick={() => handleOptionClick(option.value)}
                   role="option"
                   aria-selected={option.value === props.value}
-                  tabIndex={-1} 
+                  tabIndex={-1}
                   ref={(el) => {
                     optionsRefs.current[index] = el;
                   }}
