@@ -1,0 +1,10 @@
+.error {
+  background-color: var(--background-color);
+  padding: 15px;
+  text-align: center;
+  h1,
+  p,
+  a {
+    color: var(--font-color);
+  }
+}

@@ -4,6 +4,7 @@ import { SnippetEditor } from '@/entities';
 import styles from './SnippetPage.module.scss';
 import { SnippetInfo } from '@/features';
 import CommentList from '@/entities/Comment/CommentList';
+import { notFound } from 'next/navigation';
 interface SnippetPageProps {
   params: {
     shortUrl: string;
@@ -14,7 +15,7 @@ const SnippetPage: React.FC<SnippetPageProps> = async ({ params }) => {
   const snippet = await fetchSnippetByShortUrl(params.shortUrl);
 
   if (!snippet) {
-    return <div>Snippet not found</div>;
+    notFound();
   }
 
   return (

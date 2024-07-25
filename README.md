@@ -22,6 +22,7 @@
 - Mongoose
 - Formik
 - Monaco Editor
+- Jest
 
 ## Особенности
 
@@ -33,6 +34,7 @@
 - Управление приватностью: Возможность создавать как публичные, так и приватные сниппеты.
 - Комментарии: Пользователи могут оставлять комментарии к сниппетам, что способствует активному обсуждению и улучшению кода.
 - Адаптивный дизайн: Обеспечивает возможность на любом устройстве с браузером.
+- Тесты: На данном этапе есть покрытие юниттестами.
 
 ## Установка, настройка и запуск
 
@@ -61,7 +63,7 @@ npm install
 и прописать в нем MONGODB_URI вашей базы mongodb.
 Пример формата строки:
 MONGODB_URI=mongodb+srv://<username>:<password>@pastebin.xxx.mongodb.net/<dbname>?retryWrites=true&w=majority&appName=PasteBin
-Можно использовать например [cloud.mongodb.com](https://cloud.mongodb.com/)
+Можно создать свою базу например на [cloud.mongodb.com](https://cloud.mongodb.com/)
 
 ### Запуск Development сервера
 
@@ -82,7 +84,6 @@ npm run build
 ## Тестирование
 
 Для запуска юнит тестов выполнить команду:
-env SUPPRESS_JEST_WARNINGS=1 npm test
 
 ```sh
 npm run test
