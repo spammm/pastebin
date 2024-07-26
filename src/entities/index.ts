@@ -16,3 +16,5 @@ export type {
   CommentType,
   CommentTypeDocument,
 };
+
+export { getLanguage } from './Snippet/getLanguage';

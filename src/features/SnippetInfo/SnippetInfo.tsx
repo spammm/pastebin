@@ -1,6 +1,6 @@
 import React from 'react';
 import { InfoBlock, LocalDataTime } from '@/shared';
-import { SnippetType, monacoLanguages } from '@/entities';
+import { SnippetType, getLanguage } from '@/entities';
 
 interface SnippetInfoProps {
   snippet: SnippetType;
@@ -12,13 +12,10 @@ const SnippetInfo: React.FC<SnippetInfoProps> = ({
   className,
   ...props
 }) => {
-  const language = monacoLanguages.find(
-    (lang) => lang.value === snippet.language
-  );
   const info = {
     title: 'Параметры сниппета',
     items: [
-      { label: 'Синтаксис', value: language ? language.name : 'Plain Text' },
+      { label: 'Синтаксис', value: getLanguage(snippet.language) },
       { label: 'Автор', value: snippet.author },
       { label: 'Описание', value: snippet.description },
       {

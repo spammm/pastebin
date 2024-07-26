@@ -1,6 +1,6 @@
 import React from 'react';
 import { fetchSnippetByShortUrl, fetchSnippets } from '@/services/api/';
-import { SnippetEditor } from '@/entities';
+import { getLanguage, SnippetEditor } from '@/entities';
 import styles from './SnippetPage.module.scss';
 import { SnippetInfo } from '@/features';
 import CommentList from '@/entities/Comment/CommentList';
@@ -25,11 +25,26 @@ export async function generateMetadata({ params }: SnippetPageProps) {
     };
   }
 
+  const language = getLanguage(snippet?.language);
   return {
     title: `Snippet by ${snippet.author}`,
     description: `Code snippet by ${snippet.author}. ${snippet.description}`,
     robots: {
       index: !snippet.isPrivate,
+    },
+    keywords: [snippet.language, language],
+    openGraph: {
+      type: 'article',
+      title: `Snippet by ${snippet.author}`,
+      description: `Code snippet by ${snippet.author}. ${snippet.description}`,
+      article: {
+        tag: [snippet.language, language],
+      },
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `Snippet by ${snippet.author}`,
+      description: `Code snippet by ${snippet.author}. ${snippet.description}`,
     },
   };
 }
