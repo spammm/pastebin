@@ -16,6 +16,9 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: 'PasteBin parody',
   description: 'This is Nick pet project',
+  verification: {
+    google: 'aOEFhqjIuCn46Tz6mqG67sfqfMbci-vZ15AC2aoPYcg',
+  },
 };
 
 export default function RootLayout({
