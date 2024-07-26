@@ -16,6 +16,13 @@
   padding: 16px;
   box-shadow: var(--box-shadow-default);
   transition: transform 0.2s, box-shadow 0.2s;
+  .footer {
+    margin-top: 10px;
+    color: var(--font-color);
+    span {
+      font-style: italic;
+    }
+  }
 }
 
 .listItem:hover {

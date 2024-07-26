@@ -3,6 +3,7 @@ import React from 'react';
 
 import { SnippetType } from '@/entities';
 import { LocalDataTime } from '@/shared';
+import monacoLanguages from '@/entities/Snippet/monacoLanguages';
 import styles from './SnippetList.module.scss';
 
 interface snippetListItemProps {
@@ -12,6 +13,9 @@ interface snippetListItemProps {
 export const SnippetListItem: React.FC<snippetListItemProps> = ({
   snippet,
 }) => {
+  const language = monacoLanguages.find(
+    (lang) => lang.value === snippet.language
+  );
   return (
     <li
       className={styles.listItem}
@@ -27,6 +31,9 @@ export const SnippetListItem: React.FC<snippetListItemProps> = ({
             />
           </h2>
           <p className={styles.description}>{snippet.description}</p>
+          <footer className={styles.footer}>
+            Синтаксис: <span>{language ? language.name : 'Plain Text'}</span>
+          </footer>
         </article>
       </Link>
     </li>
