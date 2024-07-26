@@ -5,9 +5,32 @@ import styles from './SnippetPage.module.scss';
 import { SnippetInfo } from '@/features';
 import CommentList from '@/entities/Comment/CommentList';
 import { notFound } from 'next/navigation';
+
 interface SnippetPageProps {
   params: {
     shortUrl: string;
+  };
+}
+
+export async function generateMetadata({ params }: SnippetPageProps) {
+  const snippet = await fetchSnippetByShortUrl(params.shortUrl);
+
+  if (!snippet) {
+    return {
+      title: 'Snippet not found',
+      description: 'This snippet does not exist.',
+      robots: {
+        index: false,
+      },
+    };
+  }
+
+  return {
+    title: `Snippet by ${snippet.author}`,
+    description: `Code snippet by ${snippet.author}. ${snippet.description}`,
+    robots: {
+      index: !snippet.isPrivate,
+    },
   };
 }
 
