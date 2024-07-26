@@ -41,3 +41,8 @@ next-env.d.ts
 .vscode
 
 .swc
+
+# exclude sitemap & robot
+public/robots.txt
+public/sitemap.xml
+public/sitemap-*.xml
