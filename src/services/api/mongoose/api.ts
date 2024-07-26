@@ -1,7 +1,7 @@
 'use server';
 import mongoose from 'mongoose';
 import { revalidatePath } from 'next/cache';
-import { v4 as uuidv4 } from 'uuid';
+import shortid from 'shortid';
 import { connectToMongoDB } from '@/lib/mongo';
 import Snippet, { SnippetType } from '@/entities/Snippet/model';
 import Comment, {
@@ -13,7 +13,7 @@ export async function createSnippet(
   snippet: Omit<SnippetType, 'id' | 'shortUrl'>
 ): Promise<SnippetType> {
   await connectToMongoDB();
-  const shortUrl = uuidv4();
+  const shortUrl = shortid.generate();
   try {
     const newSnippet = await Snippet.create({
       shortUrl,
