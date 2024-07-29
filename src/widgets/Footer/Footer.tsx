@@ -9,7 +9,6 @@ const Footer: React.FC<HTMLAttributes<HTMLDivElement>> = ({
   return (
     <footer
       className={clsx(styles.footer, className)}
-      role="contentinfo"
       aria-label="Footer"
       {...props}
     >

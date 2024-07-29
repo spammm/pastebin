@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'http://pastebin.nickdev.ru',
+  siteUrl: process.env.SITE_URL || 'https://pastebin.nickdev.ru',
   generateRobotsTxt: true,
   sitemapSize: 7000,
   changefreq: 'daily',
