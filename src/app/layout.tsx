@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     "Snippet Vault is a web app for sharing code snippets. Create, share, and store snippets with support for multiple programming languages. Featuring an intuitive interface and dark mode, it's perfect for developers.",
   verification: {
     google: 'aOEFhqjIuCn46Tz6mqG67sfqfMbci-vZ15AC2aoPYcg',
+    yandex: '5a0650d1aaad7000',
   },
   keywords:
     'Snippet Vault, code sharing, snippets, programming, free snippets, free snippet exchange, code storage, code collaboration, developer tools, кодовые сниппеты, обмен кодом, программирование, бесплатные сниппеты, обмен кодовыми фрагментами, хранение кода, инструменты для разработчиков, совместная работа с кодом, программные решения, обмен знаниями для программистов',
