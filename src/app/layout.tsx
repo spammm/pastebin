@@ -21,7 +21,8 @@ export const metadata: Metadata = {
     google: 'aOEFhqjIuCn46Tz6mqG67sfqfMbci-vZ15AC2aoPYcg',
   },
   keywords:
-    'Snippet Vault, code sharing, snippets, programming, free snippets, free snippet exchange',
+    'Snippet Vault, code sharing, snippets, programming, free snippets, free snippet exchange, code storage, code collaboration, developer tools, кодовые сниппеты, обмен кодом, программирование, бесплатные сниппеты, обмен кодовыми фрагментами, хранение кода, инструменты для разработчиков, совместная работа с кодом, программные решения, обмен знаниями для программистов',
+
   openGraph: {
     type: 'website',
     url: `https://${process.env.NEXT_PUBLIC_DOMAIN}`,
@@ -42,7 +43,7 @@ export const metadata: Metadata = {
     title: 'Snippet Vault - Share, Store, and Discover Code Snippets Easily',
     description: `Discover and share code snippets with Snippet Vault. Perfect for developers to store, share, and find code fragments across multiple programming languages. Features include an intuitive interface and dark mode support.`,
   },
-  manifest: '/manifest.json',
+  manifest: '/site.webmanifest',
 };
 
 export default function RootLayout({

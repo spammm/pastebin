@@ -17,7 +17,11 @@ export const SnippetListItem: React.FC<snippetListItemProps> = ({
       className={styles.listItem}
       aria-labelledby={`snippetpet-title-${snippet.id}`}
     >
-      <Link href={`/${snippet.shortUrl}`} className={styles.linkWrapper}>
+      <Link
+        href={`/${snippet.shortUrl}`}
+        className={styles.linkWrapper}
+        title={snippet.description}
+      >
         <article>
           <h2 id={`snippetpet-title-${snippet.id}`} className={styles.title}>
             {snippet.author}
