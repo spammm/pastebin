@@ -40,6 +40,14 @@ export async function generateMetadata({ params }: SnippetPageProps) {
       article: {
         tag: [snippet.language, language],
       },
+      images: [
+        {
+          url: 'https://pastebin.nickdev.ru/logo.svg',
+          width: 100,
+          height: 100,
+          alt: 'Snippet Vault preview',
+        },
+      ],
     },
     twitter: {
       card: 'summary_large_image',

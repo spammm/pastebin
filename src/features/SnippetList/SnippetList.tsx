@@ -37,7 +37,12 @@ const SnippetList: React.FC = () => {
     }
   }, [inView, hasMore, loading]);
 
-  const renderSnippets = snippets.map((snippet) => {
+  const uniqueSnippets = snippets.filter(
+    (snippet, index, self) =>
+      index === self.findIndex((s) => s.shortUrl === snippet.shortUrl)
+  );
+
+  const renderSnippets = uniqueSnippets.map((snippet) => {
     return <SnippetListItem key={snippet.shortUrl} snippet={snippet} />;
   });
 
