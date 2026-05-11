@@ -1,4 +1,4 @@
-import mongoose, { Document, Model, Schema } from 'mongoose';
+import mongoose, { Document, Model, Schema, Types } from 'mongoose';
 
 export interface SnippetType {
   [x: string]: any;
@@ -9,11 +9,12 @@ export interface SnippetType {
   description: string;
   code: string;
   language: string;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface SnippetTypeDocument extends Omit<SnippetType, 'id'>, Document {
-  createdAt?: Date;
-  updatedAt?: Date;
+  _id: Types.ObjectId;
   id: string;
 }
 

@@ -1,11 +1,12 @@
 import type { Metadata } from 'next';
 import { clsx } from 'clsx';
-import { connectToMongoDB } from '@/lib/mongo';
 import { Roboto } from 'next/font/google';
 import { Footer, Header } from '@/widgets';
 import { ThemeProvider } from 'next-themes';
 import './globals.scss';
 import styles from './layout.module.scss';
+
+const siteUrl = `https://${process.env.NEXT_PUBLIC_DOMAIN || 'pastebin.nickdev.ru'}`;
 
 const roboto = Roboto({
   weight: ['400', '300', '700'],
@@ -14,35 +15,72 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: 'Snippet Vault - Share, Store, and Discover Code Snippets Easily',
+  metadataBase: new URL(siteUrl),
+  applicationName: 'AltPastebin',
+  title: {
+    default: 'AltPastebin - быстрый обмен кодовыми сниппетами',
+    template: '%s | AltPastebin',
+  },
   description:
-    "Snippet Vault is a web app for sharing code snippets. Create, share, and store snippets with support for multiple programming languages. Featuring an intuitive interface and dark mode, it's perfect for developers.",
+    'AltPastebin помогает быстро создавать, хранить и делиться кодовыми сниппетами с подсветкой языков, приватными ссылками и комментариями.',
   verification: {
     google: 'aOEFhqjIuCn46Tz6mqG67sfqfMbci-vZ15AC2aoPYcg',
     yandex: '5a0650d1aaad7000',
   },
-  keywords:
-    'Snippet Vault, code sharing, snippets, programming, free snippets, free snippet exchange, code storage, code collaboration, developer tools, кодовые сниппеты, обмен кодом, программирование, бесплатные сниппеты, обмен кодовыми фрагментами, хранение кода, инструменты для разработчиков, совместная работа с кодом, программные решения, обмен знаниями для программистов',
+  keywords: [
+    'AltPastebin',
+    'pastebin',
+    'code snippets',
+    'snippet sharing',
+    'code storage',
+    'developer tools',
+    'кодовые сниппеты',
+    'обмен кодом',
+    'хранение кода',
+    'инструменты для разработчиков',
+  ],
+  authors: [{ name: 'AltPastebin' }],
+  creator: 'AltPastebin',
+  publisher: 'AltPastebin',
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
+    },
+  },
+  category: 'technology',
 
   openGraph: {
     type: 'website',
-    url: `https://${process.env.NEXT_PUBLIC_DOMAIN}`,
-    title: 'Snippet Vault - Share, Store, and Discover Code Snippets Easily',
+    url: '/',
+    siteName: 'AltPastebin',
+    locale: 'ru_RU',
+    title: 'AltPastebin - быстрый обмен кодовыми сниппетами',
     description:
-      'Discover and share code snippets with Snippet Vault. Perfect for developers to store, share, and find code fragments across multiple programming languages. Features include an intuitive interface and dark mode support.',
+      'Создавайте, храните и делитесь кодовыми сниппетами с подсветкой языков, приватными ссылками и комментариями.',
     images: [
       {
-        url: `https://${process.env.NEXT_PUBLIC_DOMAIN}/logo.svg`,
+        url: '/logo.svg',
         width: 100,
         height: 100,
-        alt: 'Snippet Vault preview',
+        alt: 'AltPastebin logo',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Snippet Vault - Share, Store, and Discover Code Snippets Easily',
-    description: `Discover and share code snippets with Snippet Vault. Perfect for developers to store, share, and find code fragments across multiple programming languages. Features include an intuitive interface and dark mode support.`,
+    title: 'AltPastebin - быстрый обмен кодовыми сниппетами',
+    description:
+      'Создавайте, храните и делитесь кодовыми сниппетами с подсветкой языков, приватными ссылками и комментариями.',
+    images: ['/logo.svg'],
   },
   manifest: '/site.webmanifest',
 };
@@ -52,16 +90,11 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  connectToMongoDB();
   return (
     <html lang="ru" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/android-chrome-192x192.png" />
-        <link
-          rel="canonical"
-          href={`https://${process.env.NEXT_PUBLIC_DOMAIN}`}
-        />
       </head>
       <body
         className={clsx(roboto.className, styles.body, styles.wrapper, 'body')}

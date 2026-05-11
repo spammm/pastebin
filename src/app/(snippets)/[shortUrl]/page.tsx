@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchSnippetByShortUrl, fetchSnippets } from '@/services/api/';
+import { fetchSnippetByShortUrl } from '@/services/api/';
 import { getLanguage, SnippetEditor } from '@/entities';
 import styles from './SnippetPage.module.scss';
 import { SnippetInfo } from '@/features';
@@ -7,13 +7,14 @@ import CommentList from '@/entities/Comment/CommentList';
 import { notFound } from 'next/navigation';
 
 interface SnippetPageProps {
-  params: {
+  params: Promise<{
     shortUrl: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: SnippetPageProps) {
-  const snippet = await fetchSnippetByShortUrl(params.shortUrl);
+  const { shortUrl } = await params;
+  const snippet = await fetchSnippetByShortUrl(shortUrl);
 
   if (!snippet) {
     return {
@@ -26,39 +27,49 @@ export async function generateMetadata({ params }: SnippetPageProps) {
   }
 
   const language = getLanguage(snippet?.language);
+  const title = `Сниппет ${language} от ${snippet.author}`;
+  const description = `Кодовый сниппет ${language} от ${snippet.author}. ${snippet.description}`;
+
   return {
-    title: `Snippet by ${snippet.author}`,
-    description: `Code snippet by ${snippet.author}. ${snippet.description}`,
+    title,
+    description,
+    alternates: {
+      canonical: `/${shortUrl}`,
+    },
     robots: {
       index: !snippet.isPrivate,
+      follow: !snippet.isPrivate,
     },
     keywords: [snippet.language, language],
     openGraph: {
       type: 'article',
-      title: `Snippet by ${snippet.author}`,
-      description: `Code snippet by ${snippet.author}. ${snippet.description}`,
+      title,
+      description,
+      url: `/${shortUrl}`,
       article: {
         tag: [snippet.language, language],
       },
       images: [
         {
-          url: 'https://pastebin.nickdev.ru/logo.svg',
+          url: '/logo.svg',
           width: 100,
           height: 100,
-          alt: 'Snippet Vault preview',
+          alt: 'AltPastebin logo',
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: `Snippet by ${snippet.author}`,
-      description: `Code snippet by ${snippet.author}. ${snippet.description}`,
+      title,
+      description,
+      images: ['/logo.svg'],
     },
   };
 }
 
 const SnippetPage: React.FC<SnippetPageProps> = async ({ params }) => {
-  const snippet = await fetchSnippetByShortUrl(params.shortUrl);
+  const { shortUrl } = await params;
+  const snippet = await fetchSnippetByShortUrl(shortUrl);
 
   if (!snippet) {
     notFound();
@@ -80,7 +91,7 @@ const SnippetPage: React.FC<SnippetPageProps> = async ({ params }) => {
       <div className={styles.footer}>
         <SnippetInfo snippet={snippet} className={styles.info} />
         <CommentList
-          snippetId={snippet._id.toString()}
+          snippetId={snippet.id}
           className={styles.comments}
         />
       </div>
@@ -89,10 +100,3 @@ const SnippetPage: React.FC<SnippetPageProps> = async ({ params }) => {
 };
 
 export default SnippetPage;
-
-export async function generateStaticParams() {
-  const snippets = await fetchSnippets();
-  return snippets.map((snippet) => ({
-    shortUrl: snippet.shortUrl,
-  }));
-}

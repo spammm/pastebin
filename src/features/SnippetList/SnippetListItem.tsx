@@ -25,10 +25,12 @@ export const SnippetListItem: React.FC<snippetListItemProps> = ({
         <article>
           <h2 id={`snippetpet-title-${snippet.id}`} className={styles.title}>
             {snippet.author}
-            <LocalDataTime
-              date={new Date(snippet.createdAt)}
-              className={styles.date}
-            />
+            {snippet.createdAt && (
+              <LocalDataTime
+                date={new Date(snippet.createdAt)}
+                className={styles.date}
+              />
+            )}
           </h2>
           <p className={styles.description}>{snippet.description}</p>
           <footer className={styles.footer}>

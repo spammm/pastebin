@@ -4,7 +4,9 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import CommentList from './CommentList';
 import { useComments } from '@/hooks/useComments';
 
-jest.mock('@/hooks/useComments');
+jest.mock('@/hooks/useComments', () => ({
+  useComments: jest.fn(),
+}));
 
 // Мок капчи
 jest.mock('@/entities', () => ({

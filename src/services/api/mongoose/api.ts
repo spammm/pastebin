@@ -1,7 +1,7 @@
 'use server';
+import { randomBytes } from 'node:crypto';
 import mongoose from 'mongoose';
 import { revalidatePath } from 'next/cache';
-import shortid from 'shortid';
 import { connectToMongoDB } from '@/lib/mongo';
 import Snippet, { SnippetType } from '@/entities/Snippet/model';
 import Comment, {
@@ -9,19 +9,36 @@ import Comment, {
   CommentTypeDocument,
 } from '@/entities/Comment/model';
 
+type SnippetRecord = Omit<SnippetType, 'id'> & {
+  _id: { toString: () => string };
+};
+
+function serializeSnippet(snippet: SnippetRecord): SnippetType {
+  return {
+    id: snippet._id.toString(),
+    isPrivate: snippet.isPrivate,
+    shortUrl: snippet.shortUrl,
+    author: snippet.author,
+    description: snippet.description,
+    code: snippet.code,
+    language: snippet.language,
+    createdAt: snippet.createdAt,
+    updatedAt: snippet.updatedAt,
+  };
+}
+
 export async function createSnippet(
   snippet: Omit<SnippetType, 'id' | 'shortUrl'>
 ): Promise<SnippetType> {
   await connectToMongoDB();
-  const shortUrl = shortid.generate();
+  const shortUrl = randomBytes(8).toString('base64url');
   try {
     const newSnippet = await Snippet.create({
       shortUrl,
       ...snippet,
     });
-    const newSnippetObj = newSnippet.toObject() as SnippetType;
     revalidatePath('/');
-    return newSnippetObj;
+    return serializeSnippet(newSnippet);
   } catch (error) {
     console.log(error);
     throw new Error('Database Error');
@@ -33,10 +50,12 @@ export async function fetchSnippetByShortUrl(
 ): Promise<SnippetType | null> {
   await connectToMongoDB();
   try {
-    const snippet = (await Snippet.findOne({
+    const snippet = await Snippet.findOne({
       shortUrl: url,
-    }).lean()) as SnippetType;
-    return snippet;
+    })
+      .lean<SnippetRecord>()
+      .exec();
+    return snippet ? serializeSnippet(snippet) : null;
   } catch (error) {
     console.error('Database Error:', error);
     throw new Error('Database Error');
@@ -52,20 +71,10 @@ export async function fetchSnippets(
     .sort({ createdAt: -1 })
     .skip(page * limit)
     .limit(limit)
-    .lean()
+    .lean<SnippetRecord[]>()
     .exec();
 
-  return snippets.map((snippet) => ({
-    id: snippet._id.toString(),
-    isPrivate: snippet.isPrivate,
-    shortUrl: snippet.shortUrl,
-    author: snippet.author,
-    description: snippet.description,
-    code: snippet.code,
-    language: snippet.language,
-    createdAt: snippet.createdAt,
-    updatedAt: snippet.updatedAt,
-  }));
+  return snippets.map(serializeSnippet);
 }
 
 export async function fetchComments(snippetId: string): Promise<CommentType[]> {

@@ -18,10 +18,14 @@ const SnippetInfo: React.FC<SnippetInfoProps> = ({
       { label: 'Синтаксис', value: getLanguage(snippet.language) },
       { label: 'Автор', value: snippet.author },
       { label: 'Описание', value: snippet.description },
-      {
-        label: 'Дата создания',
-        value: <LocalDataTime date={new Date(snippet.createdAt)} />,
-      },
+      ...(snippet.createdAt
+        ? [
+            {
+              label: 'Дата создания',
+              value: <LocalDataTime date={new Date(snippet.createdAt)} />,
+            },
+          ]
+        : []),
     ],
   };
 
